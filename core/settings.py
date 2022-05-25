@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Local apps
+    "core.movies",
     # External apps that go after the django apps
     "django_extensions",
     "rest_framework",

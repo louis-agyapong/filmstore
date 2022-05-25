@@ -5,6 +5,7 @@ from taggit.managers import TaggableManager
 
 class Movie(models.Model):
     name = models.CharField(_("Name"), max_length=255)
+    director = models.CharField(_("Director"), max_length=255, blank=True, default="")
     description = models.TextField(_("Description"), blank=True)
     year = models.PositiveSmallIntegerField(_("Year"), blank=True, null=True)
     tags = TaggableManager(_("Tags"), blank=True)
