@@ -11,21 +11,21 @@
         <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
             {% for tag in tags %}
                 <button type="button" 
-                        class="rounded-l inline-block px-6 py-2.5 bg-blue-600 
+                        class="rounded-l inline-block px-6 py-2.5 
                         text-white font-medium text-xs leading-tight uppercase 
-                        hover:bg-blue-700 focus:bg-blue-700 focus:outline-none 
-                        focus:ring-0 active:bg-blue-800 transition duration-150 
+                        focus:ring-0 transition duration-150 focus:outline-none
                         ease-in-out mr-1"
-                        @click="tag = $el.textContent">{{ tag.name }}</button>
+                        @click="tag = $el.textContent"
+                        :class="tag === $el.textContent ? 'bg-green-600 active:bg-green-800 hover:bg-green-700 focus:bg-green-700' : 'bg-blue-600 active:bg-blue-800 hover:bg-blue-700 focus:bg-blue-700' ">{{ tag.name }}</button>
                         
             {% endfor %}
                 <button type="button" 
-                        class="rounded-l inline-block px-6 py-2.5 bg-blue-600 
+                        class="rounded-l inline-block px-6 py-2.5
                         text-white font-medium text-xs leading-tight uppercase 
-                        hover:bg-blue-700 focus:bg-blue-700 focus:outline-none 
-                        focus:ring-0 active:bg-blue-800 transition duration-150 
+                        focus:outline-none focus:ring-0 transition duration-150 
                         ease-in-out mr-1"
-                        @click="tag = $el.textContent">All</button>
+                        @click="tag = $el.textContent"
+                        :class=" tag === $el.textContent ? 'bg-green-600 active:bg-green-800 hover:bg-green-700 focus:bg-green-700' : 'bg-blue-600 active:bg-blue-800 hover:bg-blue-700 focus:bg-blue-700' ">All</button>
         </div>
     </div>
     
@@ -34,7 +34,7 @@
         <template x-for="movie in movies.filter(m => tag === 'All' || m.tags.includes(tag))">
             <a href="#" class="block p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900" x-text="movie.name"></h5>
-                <p class="font-normal text-gray-700" x-text="movie.director"></p>
+                <p class="font-normal text-gray-700">Director: <span x-text="movie.director"></span></p>
                 <small x-text="movie.tags.join(', ')"></small>
             </a>
         </template>
